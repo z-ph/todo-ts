@@ -1,7 +1,7 @@
 // stores/todo.js
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
-declare interface todo {
+export interface todo {
   text: string
   completed: boolean
   id: number
@@ -20,7 +20,6 @@ export const useTodoStore = defineStore('todos', () => {
   }
   function toggleCompleted(todo: todo) {
     const index = todos.value.indexOf(todo)
-    console.log(todo)
     todos.value[index].completed = !todos.value[index].completed
   }
 

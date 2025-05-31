@@ -20,16 +20,24 @@
         v-text="filtered ? '显示所有' : '只显示未完成'"
       ></div>
       <div
+        class="allCompleted"
+        v-text="
+          todos.reduce((a: number, todo): number => (todo.completed ? ++a : a), 0) !== todos.length
+            ? '全部完成'
+            : '全部未完成'
+        "
+        @click="
+          todos.reduce((a: number, todo): number => (todo.completed ? ++a : a), 0) !== todos.length
+            ? todos.forEach((todo) => (todo.completed = true))
+            : todos.forEach((todo) => (todo.completed = false))
+        "
+      ></div>
+      <div class="delAll" v-text="'删除所有'" @click="todos = []"></div>
+      <div
         class="delCompleted"
         v-show="todos.filter((todo) => todo.completed).length !== 0"
         v-text="'删除已完成'"
         @click="todos = todos.filter((todo) => !todo.completed)"
-      ></div>
-      <div class="delAll" v-text="'删除所有'" @click="todos = []"></div>
-      <div
-        class="allCompleted"
-        v-text="'全部完成'"
-        @click="todos.forEach((todo) => (todo.completed = true))"
       ></div>
     </div>
   </div>
@@ -70,11 +78,19 @@ h1 {
   padding: 20px;
 }
 .side-bar {
-  position: absolute;
+  position: fixed;
   top: 150px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  transition: all 0.5s;
+}
+@media (max-width: 668px) {
+  .side-bar {
+    top: 0px;
+    transform: scale(0.65);
+    transform-origin: top left;
+  }
 }
 .side-bar > * {
   color: #666;
