@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": ["es2022", "dom"]
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
+}
