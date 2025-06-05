@@ -136,6 +136,16 @@ const inputRef = ref<HTMLInputElement | null>(null)
 //泛型可用于在使用函数时，指定函数参数类型
 ```
 
+## 组件库初尝试
+
+1. 安装依赖，pnpm i --save **packageName**
+2. 局部注册
+   > import {componentName} from 'packagePath'
+3. 在template中使用
+   > <componentName/>
+4. 查阅文档，修改组件配置
+   <PlusOutlined :style="{ fontSize: '32px', color: '#333' }" />
+
 ## 细节杂项
 
 1. 打包路径：在vite.config.js中，配置 **==base:'./'==**

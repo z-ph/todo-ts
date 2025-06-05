@@ -10,7 +10,7 @@
         v-model.trim="inputValue"
         ref="inputRef"
       />
-      <button @click="submit"></button>
+      <button @click="submit"><PlusOutlined :style="{ fontSize: '32px', color: '#333' }" /></button>
     </div>
     <todo-list :todos="todos" :filtered="filtered" :filtered-todos="filteredTodos" />
     <div class="side-bar" v-show="todos.length !== 0">
@@ -44,6 +44,7 @@
 </template>
 
 <script setup lang="ts">
+import { PlusOutlined } from '@ant-design/icons-vue'
 import { ref } from 'vue'
 import TodoList from '@/components/todo-list.vue'
 import { storeToRefs } from 'pinia'
@@ -130,7 +131,7 @@ h1 {
 }
 
 .input-group button {
-  padding-right: 40px;
+  /* padding-right: 40px; */
   border-radius: 20px;
   border-start-start-radius: 0;
   border-end-start-radius: 0;
@@ -141,10 +142,10 @@ h1 {
   width: fit-content;
   flex-basis: 40px;
   flex-grow: 0;
-  background-image: url('./assets/add.svg');
+  /* background-image: url('./assets/add.svg');
   background-size: 35px;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; */
   cursor: pointer;
 }
 
